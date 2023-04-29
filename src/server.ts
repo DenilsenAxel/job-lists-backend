@@ -4,6 +4,7 @@ import { Request, Response } from "express";
 import { connectDB } from "./config/db";
 import { API_PREFIX } from "./utils/constants";
 import authRouter from "./routes/auth";
+import jobRouter from "./routes/job";
 import * as dotenv from "dotenv";
 import { sendRes } from "./utils/api";
 
@@ -21,6 +22,8 @@ app.use(bodyParser.json({ limit: process.env.MAX_REQUEST_SIZE }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(API_PREFIX, authRouter());
+app.use(API_PREFIX, jobRouter());
+
 app.get("/status", (_: Request, res: Response) => {
   return sendRes(res, 200, "Healthy Upstream");
 });
