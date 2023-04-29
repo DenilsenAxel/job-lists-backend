@@ -20,11 +20,8 @@ export const getJobs = async (req: Request, res: Response) => {
   }
 
   try {
-    const jobs = await api<IJob[]>(url);
-    if (!jobs[0]) {
-      sendRes(res, 400, "Jobs not found!");
-      return;
-    }
+    let jobs = await api<IJob[]>(url);
+    jobs = jobs.filter((el) => el !== null);
     sendRes(res, 200, "Success", jobs);
   } catch (error: any) {
     sendRes(res, 500, error.message);

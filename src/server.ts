@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import { Request, Response } from "express";
 import { connectDB } from "./config/db";
 import { API_PREFIX } from "./utils/constants";
@@ -14,6 +15,13 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 connectDB();
+
+const allowedOrigins = ["http://localhost:3000"];
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors(options));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
