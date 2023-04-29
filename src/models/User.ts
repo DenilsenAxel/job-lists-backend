@@ -21,7 +21,6 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: true,
     select: false,
-    minlength: [8, "Please use minimum of 8 characters"],
   },
 });
 

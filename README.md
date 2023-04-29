@@ -6,6 +6,6 @@ This is a quick guide to run this project as part of Fullstack Developer Intervi
 
 1. Clone this repo
 2. Navigate to the cloned repo
-3. Change the .env.example accrodingly
+3. Add `.env` file and change it according to `.env.example`
 4. Run `docker compose up --build -d`
 5. Hit http://localhost:8080/status to verify the service
